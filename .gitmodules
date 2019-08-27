@@ -1,0 +1,3 @@
+[submodule "HoudiniEngine/Plugins/HoudiniEngineForUnreal"]
+	path = HoudiniEngine/Plugins/HoudiniEngineForUnreal
+	url = https://github.com/drichardson/HoudiniEngineForUnreal.git

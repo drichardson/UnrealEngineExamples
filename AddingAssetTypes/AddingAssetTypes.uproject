@@ -1,0 +1,18 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "4.22",
+	"Category": "",
+	"Description": "",
+  "Modules": [
+    {
+      "Name": "AddingAssetTypes",
+      "Type": "Runtime",
+      "LoadingPhase": "Default"
+    },
+    {
+      "Name": "MyEditorModule",
+      "Type": "Runtime",
+      "LoadingPhase": "Default"
+    }
+  ]
+}
