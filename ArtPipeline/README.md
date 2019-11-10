@@ -1,7 +1,8 @@
-# Blender Pipeline
+# Art Pipeline
 
-Testing out folder structure described by Mike Erwin in
+Art Pipeline setup based on Mike Erwin's
 [Blender + Unreal Asset Pipeline Foundations](https://conference.blender.org/2019/presentations/563/).
+talk at Blender Conference 2019.
 
 There are 3 top level repository folders:
 
