@@ -9,16 +9,33 @@ There are 3 top level repository folders:
 - Inter
 - Game
 
-*Art* contains all original art sources, including Blender files.
+*Art* contains all original art sources (Blender, Maya, Houdini, Photoshop, etc).
 
-*Inter* contains all exported art files that can be imported by the game engine, like FBX, glTF, and OBJ.
+*Inter* contains all exported art files that can be imported by the game engine (FBX, glTF, OBJ, etc).
 
-*Game* contains everything you need to run the game.
+*Game* contains everything you need to run the game. In UE4 the imported assets will be .uasset files.
 
-An artist might only have *Art* and *Inter* checked out (if their version control system supports it).
 
-A level designer might only have *Inter* and *Game* checked out. When an artist updates exports, the level designer
-can reimport the asset in UE4. Since all imported content is stored in *Inter*, a simple *Reimport* can be used by anyone to update to the latest content in *Inter*. Note that the *Data Source Folder* Editor Preference should be set to the *Inter* folder. You can find this preference in *Editor Preferences > General > Miscellaneous > Data Source Folder*.
+## Workflow
+
+### Artist
+An artist checks out *Art* and *Inter* from source control. Original files are stored in *Art*.
+When the artist is ready, they export their files to *Inter* as an FBX, glTF, OBJ, etc and submit
+them to source control.
+
+### Level Designer
+A level designer checks out *Inter* and *Game*. When they are ready to use an asset an artist has
+added to *Inter*, they import the asset into UE4 and it becomes a .uasset. This .uasset is also submitted
+to source control.
+
+If an artist updates one of the files in *Inter*, the level designer can right click on the corresponding
+.uasset in the UE4 Content Browser and select *Reimport*. They do not need to navigate to the folder again
+since UE4 stores relative paths to the imported assets.
+
+**NOTE:** In order for *Reimport* to work across multiple checkouts (by different users or by the same user in different locations), the *Data Source Folder* Editor Preference must be set to the *Inter* folder by all users. You can find this preference in *Editor Preferences > General > Miscellaneous > Data Source Folder*. If a level designer forgets to set the *Data Source Folder* preference and imports a file, that file will have an incorrect relative path tthat will most likely not work on other user's checkouts.
+
+### Programmer
+A programmer only needs to check out *Game*, which contains all files necessary to play the UE4 game.
 
 ## Reference
 
