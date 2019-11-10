@@ -18,9 +18,7 @@ There are 3 top level repository folders:
 An artist might only have *Art* and *Inter* checked out (if their version control system supports it).
 
 A level designer might only have *Inter* and *Game* checked out. When an artist updates exports, the level designer
-can reimport the asset in UE4. Since the assets are at the same relative place for every user, the UE4 reimport command works fine (NOTE: Need to verify this works as expected).
-
-A programmer might only have *Game* checked out.
+can reimport the asset in UE4. Since all imported content is stored in *Inter*, a simple *Reimport* can be used by anyone to update to the latest content in *Inter*. Note that the *Data Source Folder* Editor Preference should be set to the *Inter* folder. You can find this preference in *Editor Preferences > General > Miscellaneous > Data Source Folder*.
 
 ## Reference
 
