@@ -33,7 +33,9 @@ If an artist updates one of the files in *Inter*, the level designer can right c
 .uasset in the UE4 Content Browser and select *Reimport*. They do not need to navigate to the folder again
 since UE4 stores relative paths to the imported assets.
 
-**NOTE:** In order for *Reimport* to work across multiple checkouts (by different users or by the same user in different locations), the *Data Source Folder* Editor Preference must be set to the *Inter* folder by all users. You can find this preference in *Editor Preferences > General > Miscellaneous > Data Source Folder*. If a level designer forgets to set the *Data Source Folder* preference and imports a file, that file will have an incorrect relative path tthat will most likely not work on other user's checkouts.
+In order for *Reimport* to work across multiple checkouts without having to manually find files all the time, the *Data Source Folder* Editor Preference must be set to the *Inter* folder by all users. You can find this preference in *Editor Preferences > General > Miscellaneous > Data Source Folder*. If a level designer forgets to set the *Data Source Folder* preference and imports a file, that file will have an incorrect relative path tthat will most likely not work on other user's checkouts.
+
+However, if *Data Source Folder* is set, the *Auto-Reimport* feature will not work properly as of UE 4.23.1 and 4.24 preview 1. This issue is fixed by [PR 6359](https://github.com/EpicGames/UnrealEngine/pull/6359).
 
 ### Programmer
 A programmer only needs to check out *Game*, which contains all files necessary to play the UE4 game.
