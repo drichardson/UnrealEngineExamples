@@ -4,12 +4,10 @@ Demonstrates how to use Vim effectively in a C++ UE4 project, including:
 - Using Vim quickfix for build errors
 - Searching Game and UE4 source code
 - Builging a ctags database to improve code navigation
-- Poor man's code completion
+- Code completion
 
 This guide is written for developers working on Windows 10, but much of it
 applies to other environments as well.
-
-Vim's built in functionality is used as much as possible, instead of relying on plugins.
 
 # Navigating Source Code
 
@@ -174,4 +172,23 @@ Documentation:
 
 You can also use the tags database for code completion with
 [i_CTRL-X_CTRL-]](https://vimhelp.org/insert.txt.html#compl-tag).
+
+### Snippets
+
+Snippet plugins like [UltiSnips](https://github.com/SirVer/ultisnips) can be
+used to automate repetative typing tasks, like calling UE_LOG or adding a
+UPROPERTY. There are several UE4 snippet libraries, including one I maintain
+called [vim-ue4](https://github.com/drichardson/vim-ue4).
+
+To use vim-ue4, install Ultisnips and vim-ue4 like any vim package, and then in insert mode, press tab after the snippet name to expand the snippet.
+
+I also add the following to my *.vimrc* so that UltiSnips uses Tab and Shift+Tab to move throught the snippet fields:
+
+``` vim
+let g:UltiSnipsExpandTrigger = "<Tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
+let g:UltiSnipsJumpForwardTrigger = "<Tab>"
+let g:UltiSnipsListSnippets = "<Leader>l"
+```
+
 
