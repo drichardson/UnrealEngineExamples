@@ -74,7 +74,7 @@ searched is subject to Vim processing that happens on every file loaded into
 Vim.
 
 ### Default Vim Usage
-These examples show you how vim works out of the box.
+These examples show you how Vim code searching by default.
 
 #### Search in Current Directory
 
@@ -139,7 +139,7 @@ These mappings work with all quickfix windows (search results and build results)
 - F5: go to a previous error/search result list
 - F6: go to a newer error/search result list
 
-### Jumping to Tags
+## Jumping to Tags
 
 Documentation:
 
