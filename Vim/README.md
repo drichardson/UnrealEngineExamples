@@ -124,9 +124,6 @@ Here are some suggested key mappings [key mappings](https://vimhelp.org/map.txt.
 noremap <F3> :cprev<CR>
 noremap <F4> :cnext<CR>
 noremap <S-F4> :grep <cword><CR>
-" Shift+F4 doesn't work through ssh+windows terminal, so instead map the
-" sequence ssh sees instead. I got this by typing Control+V, Shift+F4.
-map [26~ <S-F4>
 noremap <F5> :colder<CR>
 noremap <F6> :cnewer<CR>
 ```
