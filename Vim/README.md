@@ -13,7 +13,7 @@ Vim's built in functionality is used as much as possible, instead of relying on 
 
 ## Code Navigation: Browsing with netrw
 
-Documentation: [netrw](https://vimhelp.org/pi_netrw.txt.htm)
+Documentation: [netrw](https://vimhelp.org/pi_netrw.txt.html)
 
 ```vim
 :e source/code/directory
@@ -101,22 +101,12 @@ These examples show you how vim works out of the box.
 :vimgrep SearchTerm */**
 ```
 
-### Rescursive Search
+### ripgrep - Faster Code Search
 
-By default, the `:grep` command does not recursively search directories. For source code, this is inconvenient. To do recursive search by default, change `grepprg` like so:
-
-With `findstr`:
-
-``` vim
-set grepprg=findstr\ /n\ /s \ /p
-```
-
-
-### Faster Code Search
-
-[Code Search
-Shootout](https://github.com/drichardson/CodeSearchShootout) tests recursive
-code searches with some popular grep alternatives. I use [`ripgrep`](https://github.com/BurntSushi/ripgrep) because it is the fastest code search tool that is actively maintained.
+[Code Search Shootout](https://github.com/drichardson/CodeSearchShootout) tests
+recursive code searches with some popular grep alternatives. I use
+[`ripgrep`](https://github.com/BurntSushi/ripgrep) because it is the fastest
+code search tool that is actively maintained.
 
 To configure vim to use `ripgrep`, install `ripgrep`, make sure `rg` is in your
 `PATH`, and then add this to *.vimrc*:
@@ -128,7 +118,7 @@ endif
 ``` 
 
 ### Code Search Key Mappings
-You can also add [key mappings](https://vimhelp.org/map.txt.html) to reduce typing for comm
+Here are some suggested key mappings [key mappings](https://vimhelp.org/map.txt.html).
 
 ``` vim
 noremap <F3> :cprev<CR>
@@ -136,9 +126,47 @@ noremap <F4> :cnext<CR>
 noremap <S-F4> :grep <cword><CR>
 " Shift+F4 doesn't work through ssh+windows terminal, so instead map the
 " sequence ssh sees instead. I got this by typing Control+V, Shift+F4.
-map 
+map [26~ <S-F4>
+noremap <F5> :colder<CR>
+noremap <F6> :cnewer<CR>
 ```
+
+These mappings work with all quickfix windows (search results and build results).
+
+- F3: previous entry
+- F4: next entry
+- Shift+F4: grep for word under cursor
+- F5: go to a previous error/search result list
+- F6: go to a newer error/search result list
+
 
 ## Code Completion
 
-## Code Navigation
+Documentation:
+
+- [`'completefunc'`](https://vimhelp.org/options.txt.html#%27completefunc%27)
+- [`'omnifunc'`](https://vimhelp.org/options.txt.html#%27omnifunc%27)
+
+### ctags
+
+Documentation:
+
+- [tagsrch](https://vimhelp.org/tagsrch.txt.html)
+- [Universal Ctags Docs](https://docs.ctags.io/en/latest/)
+
+1. Install [Universal Ctags](https://github.com/universal-ctags/ctags).
+2. Build a tags database with:
+
+    cd my/source/directory
+    ctags -R .
+
+3. Lookup tags
+    - :tag SomeSymbol - goto tag
+    - CTRL-] - goto tag under cursor
+    - :tselect SomeSymbol - open list of matching tags
+
+#### Tag Base Code Completion
+
+You can also use the tags database for code completion with
+[i_CTRL-X_CTRL-]](https://vimhelp.org/insert.txt.html#compl-tag).
+
