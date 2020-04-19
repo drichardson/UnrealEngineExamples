@@ -11,7 +11,16 @@ applies to other environments as well.
 
 Vim's built in functionality is used as much as possible, instead of relying on plugins.
 
-## Code Navigation: Browsing with netrw
+# Navigating Source Code
+
+Navigating source code includes:
+
+- Browsing directories
+- Opening by filename or pattern
+- Searching file contents
+- Jumping to tags
+
+## Browsing Directories
 
 Documentation: [netrw](https://vimhelp.org/pi_netrw.txt.html)
 
@@ -19,15 +28,17 @@ Documentation: [netrw](https://vimhelp.org/pi_netrw.txt.html)
 :e source/code/directory
 ```
 
-## Code Navigation: Open
+## Opening Files
 
 Documentation: [edit-a-file](https://vimhelp.org/editing.txt.html#edit-a-file)
+
+### By Filename
 
 ```
 :e source/code/directory/file.cpp
 ```
 
-## Code Navigation: Open with Pattern
+## By Pattern
 
 Documentation: [file-searching](https://vimhelp.org/editing.txt.html#file-searching)
 
@@ -37,21 +48,13 @@ To recursively search for files matching a pattern from the current directory:
 :e **/f*.cpp
 ```
 
-https://vimhelp.org/options.txt.html#%27wildmenu%27
-
-
 If there are more than one result, the first one will be used. To pick an option from a list instead using the [`wildmenu`](https://vimhelp.org/options.txt.html#%27wildmenu%27):
 
 ```
 :e **/f*.cpp<TAB>
 ```
 
-## Quickfixing Build Errors
-
-Documentation: [quickfix](https://vimhelp.org/quickfix.txt.html)
-
-
-## Code Search
+## Search File Contents
 
 Documentation: [quickfix](https://vimhelp.org/quickfix.txt.html)
 
@@ -136,15 +139,7 @@ These mappings work with all quickfix windows (search results and build results)
 - F5: go to a previous error/search result list
 - F6: go to a newer error/search result list
 
-
-## Code Completion
-
-Documentation:
-
-- [`'completefunc'`](https://vimhelp.org/options.txt.html#%27completefunc%27)
-- [`'omnifunc'`](https://vimhelp.org/options.txt.html#%27omnifunc%27)
-
-### ctags
+### Jumping to Tags
 
 Documentation:
 
@@ -161,6 +156,19 @@ Documentation:
     - :tag SomeSymbol - goto tag
     - CTRL-] - goto tag under cursor
     - :tselect SomeSymbol - open list of matching tags
+
+
+# Building
+
+Documentation: [quickfix](https://vimhelp.org/quickfix.txt.html)
+
+# Code Completion
+
+Documentation:
+
+- [`'completefunc'`](https://vimhelp.org/options.txt.html#%27completefunc%27)
+- [`'omnifunc'`](https://vimhelp.org/options.txt.html#%27omnifunc%27)
+
 
 #### Tag Base Code Completion
 
