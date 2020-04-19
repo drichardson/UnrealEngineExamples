@@ -1,4 +1,6 @@
+*.blend1
 *.sln
+*.swp
 .vs/
 Binaries/
 Build/
@@ -6,4 +8,3 @@ DerivedDataCache/
 Intermediate/
 Saved/
 backup
-*.blend1
