@@ -12,8 +12,5 @@ TODO
 ## Skeletal Mesh Component with Animation Blueprint
 TODO
 
-## Skinned Mesh Component, Tick, and Bone Transforms
-TODO
-
 ## Material Vertex Manipulation
 TODO
