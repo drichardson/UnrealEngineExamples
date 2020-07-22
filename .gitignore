@@ -8,3 +8,6 @@ DerivedDataCache/
 Intermediate/
 Saved/
 backup
+tags
+tags.engine
+session.vim
