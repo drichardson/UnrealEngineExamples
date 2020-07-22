@@ -65,12 +65,13 @@ UAudioComponent* UMyGameInstance::InitializeWorldMusicComponentOnce(UObject* Wor
 	if (WorldMusicComponent == nullptr)
 	{
 		UE_LOG(LogGameInstance, Error, TEXT("Failed to create WorldMusicComponent"));
-		WorldMusicComponent->bAllowSpatialization = false;
-		WorldMusicComponent->bIsUISound = true;
-		WorldMusicComponent->bIgnoreForFlushing = true;
-		WorldMusicComponent->Play();
 		return nullptr;
 	}
+
+	WorldMusicComponent->bAllowSpatialization = false;
+	WorldMusicComponent->bIsUISound = true;
+	WorldMusicComponent->bIgnoreForFlushing = true;
+	WorldMusicComponent->Play();
 
 	UE_LOG(LogGameInstance,
 		   Verbose,
