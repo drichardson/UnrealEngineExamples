@@ -1,6 +1,17 @@
-Epic sample content (e.g., Animation Starter Pack) is licensed under the terms of the [Unreal Engine End User License Agreement version 13](https://www.unrealengine.com/en-US/eula) section 1.e:
+Epic sample content (e.g., Animation Starter Pack) is licensed under the terms of the
+[Unreal Engine End User License Agreement version 13](https://www.unrealengine.com/en-US/eula)
+section 1.e:
 
-> Distribution and sublicensing of Examples - You may Distribute or sublicense Examples (including as modified by you under the License) in Source Code or object code format to any third party.  However, the rights in this Section 1(e) do not expand or modify your limited Distribution and sublicensing rights for Engine Code and Content (including as modified by you under the License) that are not Examples. 
+> Distribution and sublicensing of Examples - You may Distribute or sublicense
+> Examples (including as modified by you under the License) in Source Code or
+> object code format to any third party.  However, the rights in this Section
+> 1(e) do not expand or modify your limited Distribution and sublicensing
+> rights for Engine Code and Content (including as modified by you under the
+> License) that are not Examples. 
+
+The VolumetricClouds folder contains assets downloaded from Michael Kinsey's
+[Volumetric Clouds in UE4 Tutorial Content](https://www.artstation.com/marketplace/p/KzYA/dinusty-volumetric-clouds-in-ue4-tutorial-content)
+which are licensed under ArtStation's [Marketplace EULA](https://www.artstation.com/marketplace-product-eula).
 
 The rest of the project is free and unencumbered software released into the public domain.
 
