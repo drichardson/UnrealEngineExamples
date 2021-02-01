@@ -9,5 +9,11 @@
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
 		}
+	],
+	"Plugins": [
+		{
+			"Name": "ReplicationGraph",
+			"Enabled": true
+		}
 	]
 }
