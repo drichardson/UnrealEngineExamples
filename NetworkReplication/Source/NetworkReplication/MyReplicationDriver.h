@@ -60,12 +60,12 @@ public:
 };
 
 UCLASS(transient)
-class UMyReplicationGraphConnectionDriver : public UReplicationConnectionDriver
+class UMyReplicationConnectionDriver : public UReplicationConnectionDriver
 {
 	GENERATED_BODY()
 
 public:
-	UMyReplicationGraphConnectionDriver();
+	UMyReplicationConnectionDriver();
 
 	void NotifyActorChannelAdded(AActor* Actor, UActorChannel* Channel) override;
 
