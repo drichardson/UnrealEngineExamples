@@ -6,6 +6,8 @@
 
 #include "MyReplicationDriver.generated.h"
 
+class UMyReplicationConnectionDriver;
+
 UCLASS(transient)
 class UMyReplicationDriver : public UReplicationDriver
 {
@@ -57,6 +59,15 @@ public:
 
 	/** The main function that will actually replicate actors. Called every server tick. */
 	int32 ServerReplicateActors(float DeltaSeconds) override;
+
+private:
+	UPROPERTY()
+	UNetDriver* NetDriver;
+
+	TArray<AActor*> NetworkActors;
+	TMap<UNetConnection*, UMyReplicationConnectionDriver*> ConnectionDrivers;
+
+	float TimeLeftUntilUpdate = -1.f;
 };
 
 UCLASS(transient)
@@ -84,4 +95,7 @@ public:
 	void NotifyClientVisibleLevelNamesAdd(FName LevelName, UWorld* StreamingWorld) override;
 
 	void NotifyClientVisibleLevelNamesRemove(FName LevelName) override;
+
+public:
+	TMap<AActor*, UActorChannel*> ActorChannels;
 };
