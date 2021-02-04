@@ -22,4 +22,7 @@ public:
 	void RouteRemoveNetworkActorToNodes(const FNewReplicatedActorInfo& ActorInfo) override;
 
 	int32 ServerReplicateActors(float DeltaSeconds) override;
+
+private:
+	UReplicationGraphNode_ActorList* AlwaysRelevantNode;
 };
