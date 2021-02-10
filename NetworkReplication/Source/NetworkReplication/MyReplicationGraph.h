@@ -25,4 +25,11 @@ public:
 
 private:
 	UReplicationGraphNode_ActorList* AlwaysRelevantNode;
+
+	// Actors that are only supposed to replicate to their owning connection, but that did not have
+	// a connection on spawn
+	TArray<AActor*> PendingOnlyRelevantToOwnerActors;
+
+	TMap<UNetConnection*, UReplicationGraphNode_AlwaysRelevant_ForConnection*>
+		AlwaysRelevantForConnection;
 };
