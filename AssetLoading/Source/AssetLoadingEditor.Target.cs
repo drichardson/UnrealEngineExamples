@@ -9,6 +9,9 @@ public class AssetLoadingEditorTarget : TargetRules
 	{
 		Type = TargetType.Editor;
 
+
+        DefaultBuildSettings = BuildSettingsVersion.V2;
+
         bUseUnityBuild = false;
         bUsePCHFiles = false;
 

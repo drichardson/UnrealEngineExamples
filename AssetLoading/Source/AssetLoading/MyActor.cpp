@@ -5,9 +5,9 @@
 #include "Engine/FontFace.h"
 #include "Engine/Texture2D.h"
 #include "EngineFontServices.h"
+#include "Framework/Application/SlateApplication.h"
 #include "Log.h"
 #include "Materials/MaterialInterface.h"
-#include "SlateApplication.h"
 #include "UObject/ConstructorHelpers.h"
 
 AMyActor::AMyActor()
@@ -16,11 +16,12 @@ AMyActor::AMyActor()
 	if (!once)
 	{
 		once = true;
-//		FEngineFontServices::Create();
+		//		FEngineFontServices::Create();
 
-		//TSharedRef<FSlateRenderer> SlateRenderer = FModuleManager::Get().GetModuleChecked<ISlateRHIRendererModule>("SlateRHIRenderer").CreateSlateRHIRenderer();
-		//FSlateApplication& CurrentSlateApp = FSlateApplication::Get();
-		//CurrentSlateApp.InitializeRenderer(SlateRenderer);
+		// TSharedRef<FSlateRenderer> SlateRenderer =
+		// FModuleManager::Get().GetModuleChecked<ISlateRHIRendererModule>("SlateRHIRenderer").CreateSlateRHIRenderer();
+		// FSlateApplication& CurrentSlateApp = FSlateApplication::Get();
+		// CurrentSlateApp.InitializeRenderer(SlateRenderer);
 
 #if 0
 		{
@@ -31,8 +32,10 @@ AMyActor::AMyActor()
 #endif
 	}
 
-	static ConstructorHelpers::FObjectFinder<UFont> FontFinder(TEXT("Font'/Game/Roboto-Regular_Font.Roboto-Regular_Font'"));
-	static ConstructorHelpers::FObjectFinder<UTexture2D> TextureFinder(TEXT("Texture2D'/Game/Circle.Circle'"));
+	static ConstructorHelpers::FObjectFinder<UFont> FontFinder(
+		TEXT("Font'/Game/Roboto-Regular_Font.Roboto-Regular_Font'"));
+	static ConstructorHelpers::FObjectFinder<UTexture2D> TextureFinder(
+		TEXT("Texture2D'/Game/Circle.Circle'"));
 
 	Font = FontFinder.Object;
 	Texture = TextureFinder.Object;
@@ -48,14 +51,22 @@ void AMyActor::BeginPlay()
 
 	UObject* TmpObject = NewObject<UMyObj>();
 
-	FontFace = LoadObject<UFontFace>(TmpObject, TEXT("FontFace'/Game/Roboto-Regular.Roboto-Regular'"));
+	FontFace =
+		LoadObject<UFontFace>(TmpObject, TEXT("FontFace'/Game/Roboto-Regular.Roboto-Regular'"));
 	LastFontFace = FontFace;
 
-	UObject* PreCastMat = StaticLoadObject(UMaterialInterface::StaticClass(), TmpObject, TEXT("Material'/Game/Folder1/Mat1.Mat1'"));
+	UObject* PreCastMat = StaticLoadObject(
+		UMaterialInterface::StaticClass(), TmpObject, TEXT("Material'/Game/Folder1/Mat1.Mat1'"));
 	Mat = Cast<UMaterialInterface>(PreCastMat);
 	LastMat = Mat;
 
-	UE_LOG(MyLog, Log, TEXT("BeginPlay: FontFace is %p, Mat is %p (pre-cast Mat %p), TmpObject is %p"), Font, Mat, PreCastMat, TmpObject);
+	UE_LOG(MyLog,
+		   Log,
+		   TEXT("BeginPlay: FontFace is %p, Mat is %p (pre-cast Mat %p), TmpObject is %p"),
+		   Font,
+		   Mat,
+		   PreCastMat,
+		   TmpObject);
 
 	if (FontFace == nullptr)
 	{
