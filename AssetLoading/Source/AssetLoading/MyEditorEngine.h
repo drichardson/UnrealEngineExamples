@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Editor/UnrealEdEngine.h"
+
 #include "MyEditorEngine.generated.h"
 
 UCLASS()
@@ -13,6 +14,5 @@ public:
 	~UMyEditorEngine();
 
 private:
-
 	void Init(class IEngineLoop* InEngineLoop) override;
 };

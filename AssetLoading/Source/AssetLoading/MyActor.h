@@ -1,7 +1,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
+
 #include "GameFramework/Actor.h"
+
 #include "MyActor.generated.h"
 
 UCLASS()

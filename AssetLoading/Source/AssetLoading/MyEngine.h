@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Engine/GameEngine.h"
+
 #include "MyEngine.generated.h"
 
 UCLASS()
@@ -13,6 +14,5 @@ public:
 	~UMyEngine();
 
 private:
-
 	void Init(class IEngineLoop* InEngineLoop) override;
 };
