@@ -7,4 +7,13 @@ Test a few different ways of loading assets from C++, including:
 
 Observe that font assets are not loaded from FObjectFinder when the `-server` flag is passed to UE4Editor.exe.
 
-See [Referencing Assets](https://docs.unrealengine.com/en-us/Programming/Assets/ReferencingAssets) for more info.
+
+# Observations
+
+- In PIE, TSoftObjectPtr.IsPending() returns 0, indicator the asset is already loaded, even before you have loaded it. That's because it may actually be loaded by the editor. To test a more game like scenario, run in Standalone mode.
+
+
+# See also
+
+- [Referencing Assets](https://docs.unrealengine.com/en-us/Programming/Assets/ReferencingAssets)
+- [Asynchronous Asset Loading](https://docs.unrealengine.com/en-US/ProgrammingAndScripting/ProgrammingWithCPP/Assets/AsyncLoading/index.html)

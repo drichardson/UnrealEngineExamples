@@ -32,6 +32,10 @@ public:
 	class UMaterialInterface* Mat;
 
 	class UMaterialInterface* LastMat = nullptr;
+
+	// Indirect Property Reference. Have to manually load.
+	UPROPERTY(EditDefaultsOnly)
+	TSoftObjectPtr<class UMaterialInterface> MatSoftObjectPtr;
 };
 
 UCLASS()

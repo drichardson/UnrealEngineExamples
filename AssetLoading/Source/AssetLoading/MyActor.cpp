@@ -40,7 +40,7 @@ AMyActor::AMyActor()
 	Font = FontFinder.Object;
 	Texture = TextureFinder.Object;
 
-	UE_LOG(MyLog, Log, TEXT("CTOR: Font is %p, Texture is %p"), Font, Texture);
+	UE_LOG(LogAssetLoading, Log, TEXT("CTOR: Font is %p, Texture is %p"), Font, Texture);
 
 	PrimaryActorTick.bCanEverTick = true;
 }
@@ -60,7 +60,7 @@ void AMyActor::BeginPlay()
 	Mat = Cast<UMaterialInterface>(PreCastMat);
 	LastMat = Mat;
 
-	UE_LOG(MyLog,
+	UE_LOG(LogAssetLoading,
 		   Log,
 		   TEXT("BeginPlay: FontFace is %p, Mat is %p (pre-cast Mat %p), TmpObject is %p"),
 		   Font,
@@ -71,21 +71,48 @@ void AMyActor::BeginPlay()
 	if (FontFace == nullptr)
 	{
 		Font = LoadObject<UFont>(this, TEXT("Font'/Game/Roboto-Regular_Font.Roboto-Regular_Font'"));
-		UE_LOG(MyLog, Log, TEXT("Font was null, after LoadObject is now %p"), Font);
+		UE_LOG(LogAssetLoading, Log, TEXT("Font was null, after LoadObject is now %p"), Font);
 	}
+
+	if (GetWorld()->IsPlayInEditor())
+	{
+		UE_LOG(LogAssetLoading,
+			   Warning,
+			   TEXT("Indirect property references (e.g. TSoftObjectPtr) cannot be properly "
+					"demonstrated in PIE, since assets may have already been loaded by the editor. "
+					"Run in standalone for a better test."));
+	}
+
+	UE_LOG(LogAssetLoading,
+		   Log,
+		   TEXT("MatSoftObjectPtr pending? %d path=%s"),
+		   MatSoftObjectPtr.IsPending(),
+		   *MatSoftObjectPtr.ToString());
+
+	if (MatSoftObjectPtr.IsPending())
+	{
+		UMaterialInterface* M = MatSoftObjectPtr.LoadSynchronous();
+		UE_LOG(LogAssetLoading, Log, TEXT("LoadSynchronous returned %s"), *GetNameSafe(M));
+	}
+
+	UE_LOG(LogAssetLoading,
+		   Log,
+		   TEXT("MatSoftObjectPtr pending? %d, name=%s"),
+		   MatSoftObjectPtr.IsPending(),
+		   *GetNameSafe(MatSoftObjectPtr.Get()));
 }
 
 void AMyActor::Tick(float DeltaSeconds)
 {
 	if (FontFace != LastFontFace)
 	{
-		UE_LOG(MyLog, Log, TEXT("Tick: FontFace changed from %p to %p"), LastFontFace, FontFace);
+		UE_LOG(LogAssetLoading, Log, TEXT("Tick: FontFace changed from %p to %p"), LastFontFace, FontFace);
 		LastFontFace = FontFace;
 	}
 
 	if (Mat != LastMat)
 	{
-		UE_LOG(MyLog, Log, TEXT("Tick: Mat changed from %p to %p"), LastMat, Mat);
+		UE_LOG(LogAssetLoading, Log, TEXT("Tick: Mat changed from %p to %p"), LastMat, Mat);
 		LastMat = Mat;
 	}
 
@@ -94,10 +121,10 @@ void AMyActor::Tick(float DeltaSeconds)
 
 UMyObj::UMyObj()
 {
-	UE_LOG(MyLog, Log, TEXT("UMyObj::UMyObj"));
+	UE_LOG(LogAssetLoading, Log, TEXT("UMyObj::UMyObj"));
 }
 
 UMyObj::~UMyObj()
 {
-	UE_LOG(MyLog, Log, TEXT("UMyObj::~UMyObj"));
+	UE_LOG(LogAssetLoading, Log, TEXT("UMyObj::~UMyObj"));
 }

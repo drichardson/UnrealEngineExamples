@@ -2,4 +2,4 @@
 
 #include "CoreMinimal.h"
 
-DECLARE_LOG_CATEGORY_EXTERN(MyLog, Log, All);
+DECLARE_LOG_CATEGORY_EXTERN(LogAssetLoading, Log, All);
