@@ -3,12 +3,23 @@
 #include "Engine/Engine.h"
 #include "Engine/Font.h"
 #include "Engine/FontFace.h"
+#include "Engine/StreamableManager.h"
 #include "Engine/Texture2D.h"
 #include "EngineFontServices.h"
 #include "Framework/Application/SlateApplication.h"
 #include "Log.h"
 #include "Materials/MaterialInterface.h"
 #include "UObject/ConstructorHelpers.h"
+
+static FStreamableManager& GetMyStreamableManager()
+{
+	static FStreamableManager* M = nullptr;
+	if (M == nullptr)
+	{
+		M = new FStreamableManager();
+	}
+	return *M;
+}
 
 AMyActor::AMyActor()
 {
@@ -83,6 +94,9 @@ void AMyActor::BeginPlay()
 					"Run in standalone for a better test."));
 	}
 
+	//
+	// TSoftObjectPtr - synchronous loading
+	//
 	UE_LOG(LogAssetLoading,
 		   Log,
 		   TEXT("MatSoftObjectPtr pending? %d path=%s"),
@@ -100,6 +114,67 @@ void AMyActor::BeginPlay()
 		   TEXT("MatSoftObjectPtr pending? %d, name=%s"),
 		   MatSoftObjectPtr.IsPending(),
 		   *GetNameSafe(MatSoftObjectPtr.Get()));
+
+	//
+	// TSoftObjectPtr - synchronous loading with IStreamingManager.
+	//
+	UE_LOG(LogAssetLoading,
+		   Log,
+		   TEXT("MatSoftObjectPtr pending? %d path=%s"),
+		   MatSoftObjectPtr.IsPending(),
+		   *MatSoftObjectPtr.ToString());
+
+	if (MatSoftObjectPtr.IsPending())
+	{
+		UMaterialInterface* M = MatSoftObjectPtr.LoadSynchronous();
+		UE_LOG(LogAssetLoading, Log, TEXT("LoadSynchronous returned %s"), *GetNameSafe(M));
+	}
+
+	UE_LOG(LogAssetLoading,
+		   Log,
+		   TEXT("MatSoftObjectPtr pending? %d, name=%s"),
+		   MatSoftObjectPtr.IsPending(),
+		   *GetNameSafe(MatSoftObjectPtr.Get()));
+
+	//
+	// TSoftObjectPtr - asynchronous loading
+	//
+	UE_LOG(LogAssetLoading,
+		   Log,
+		   TEXT("MatSoftObjectPtr_Async pending? %d path=%s"),
+		   MatSoftObjectPtr_Async.IsPending(),
+		   *MatSoftObjectPtr_Async.ToString());
+
+	if (MatSoftObjectPtr_Async.IsPending())
+	{
+		TSharedPtr<FStreamableHandle>& H = MatSoftObjectPtr_Async_Handle;
+		H = GetMyStreamableManager().RequestAsyncLoad(
+			MatSoftObjectPtr_Async.ToSoftObjectPath(),
+			FStreamableDelegate::CreateUObject(this, &AMyActor::OnAsyncLoadComplete));
+
+		UE_LOG(LogAssetLoading,
+			   Log,
+			   TEXT("Async_Handle: DebugName=%s HasLoadCompleted=%d IsLoadingInProgress=%d"),
+			   *H->GetDebugName(),
+			   H->HasLoadCompleted(),
+			   H->IsLoadingInProgress());
+	}
+
+	UE_LOG(LogAssetLoading,
+		   Log,
+		   TEXT("MatSoftObjectPtr_Async pending? %d, name=%s"),
+		   MatSoftObjectPtr_Async.IsPending(),
+		   *GetNameSafe(MatSoftObjectPtr_Async.Get()));
+}
+
+void AMyActor::OnAsyncLoadComplete()
+{
+	TSharedPtr<FStreamableHandle>& H = MatSoftObjectPtr_Async_Handle;
+	UE_LOG(LogAssetLoading,
+		   Log,
+		   TEXT("OnAsyncLoadComplete: name=%s, HasLoadCompleted=%d"),
+		   *GetNameSafe(MatSoftObjectPtr_Async.Get()),
+		   H->HasLoadCompleted());
 }
 
 void AMyActor::Tick(float DeltaSeconds)
