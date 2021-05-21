@@ -1,12 +1,15 @@
-#
 # Built In Audio Example
-#
 
-Demonstrates the UE4 audio system and plugins shipped with the engine.
+Demonstrates the UE4 audio system and plugins shipped with the engine including:
 
-# Audio Occlusion Notes
+- Attenuation
+- Audio Volumes (volume in the 3D -not audio level- sense)
+- Effects
+- Sound Class Mixes
+- Sound Classes
+- Sound Cues
+- Sound Waves
+- Submixes
 
-An actor cannot occlude it's own audio. That is why the BP_AudioSource test spawns a separate
-actor to play the audio rather than use a UAudioComponent.
+Demonstrates features like listener focus, occlusion, and air absorption.
 
-See `FActiveSound::CheckOcclusion` for more information.
