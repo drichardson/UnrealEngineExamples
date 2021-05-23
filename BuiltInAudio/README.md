@@ -13,3 +13,7 @@ Demonstrates the UE4 audio system and plugins shipped with the engine including:
 
 Demonstrates features like listener focus, occlusion, and air absorption.
 
+
+The IR (impulse response) asset created for the ChapelReverbSubmix was made
+with the [Tobiasz 'unfa' Karoń's](https://freesound.org/people/unfa/) recording
+[IR-02 (gunshot in a chapel MIXED)](https://freesound.org/people/unfa/sounds/182806/).
