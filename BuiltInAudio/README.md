@@ -59,3 +59,7 @@ AudioMixer prefix. For example:
 The IR (impulse response) asset created for the ChapelReverbSubmix was made
 with the [Tobiasz 'unfa' Karoń's](https://freesound.org/people/unfa/) recording
 [IR-02 (gunshot in a chapel MIXED)](https://freesound.org/people/unfa/sounds/182806/).
+
+## See Also
+
+- [XAudio2 Introduction](https://docs.microsoft.com/en-us/windows/win32/xaudio2/xaudio2-introduction)
