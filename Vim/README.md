@@ -1,3 +1,12 @@
+# UPDATE
+Some of the issues learned here are addressed in the following projects:
+
+- [vim-ue4](https://github.com/drichardson/vim-ue4)
+- [vim-cpp](https://github.com/drichardson/vim-cpp)
+- [ue4cli](https://github.com/adamrehn/ue4cli)
+- [ctags-ue4cli](https://github.com/drichardson/ctags-ue4cli/)
+
+
 # WORK IN PROGRESS: Vim Workflow
 Demonstrates how to use Vim effectively in a C++ UE4 project, including:
 
@@ -116,7 +125,7 @@ To configure vim to use `ripgrep`, install `ripgrep`, make sure `rg` is in your
 if executable('rg')
     set grepprg=rg\ -Hn\ --trim
 endif
-``` 
+```
 
 ### Code Search Key Mappings
 Here are some suggested key mappings [key mappings](https://vimhelp.org/map.txt.html).
