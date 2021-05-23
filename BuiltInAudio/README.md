@@ -11,7 +11,8 @@ Demonstrates the UE4 audio system and plugins shipped with the engine including:
 - Sound Waves
 - Submixes
 
-Demonstrates features like listener focus, occlusion, and air absorption.
+Demonstrates features like listener focus, occlusion, and air absorption, and
+how to play audio across level transitions.
 
 When the AudioTest level loads, the level blueprint runs a bunch of audio debug
 commands to display info on screen during play. See [Audio Console
