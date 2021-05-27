@@ -12,7 +12,13 @@ PanningMethod=EqualPower
 MonoChannelUpmixMethod=EqualPower
 ```
 
+## Credits
+
+The IR (impulse response) asset created was created from the [EchoThief](http://www.echothief.com/) library.
+
 ## See Also
 
 - [New Audio Features](https://docs.unrealengine.com/5.0/en-US/AudioFeatures/)
+
+
 
