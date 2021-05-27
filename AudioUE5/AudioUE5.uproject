@@ -12,6 +12,14 @@
 				"Mac",
 				"Linux"
 			]
+		},
+		{
+			"Name": "Metasound",
+			"Enabled": true
+		},
+		{
+			"Name": "AudioModulation",
+			"Enabled": true
 		}
 	]
 }
