@@ -14,7 +14,8 @@ MonoChannelUpmixMethod=EqualPower
 
 ## Credits
 
-The IR (impulse response) asset created was created from the [EchoThief](http://www.echothief.com/) library.
+The EchoThief_FortWordenTunnel IR (impulse response) asset was created from the
+[EchoThief](http://www.echothief.com/) library.
 
 ## See Also
 
