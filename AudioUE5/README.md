@@ -1,6 +1,6 @@
 # Audio example for UE5
 
-Demonstration of of the Metasound feature added in UE5. Includes:
+Demonstration of the Metasound feature added in UE5. Includes:
 
 - Exploration of Metasounds, starting with a A440 generator
 - Procedurally generated wind sound
