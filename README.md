@@ -1,6 +1,6 @@
-# UE4 Examples
+# Unreal Engine Examples
 
-A collection Unreal Engine example projects demonstrating various aspects of the engine.
+A collection Unreal Engine example projects demonstrating various aspects of the engine for UE4 and UE5.
 
 See also:
 
