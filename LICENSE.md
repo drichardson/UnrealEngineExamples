@@ -61,3 +61,12 @@ files) which states:
 > reverberation). If you would like to use it in any other way, let's talk. You
 > can reach me at chris@superhoax.com .
 
+
+
+# Fully Automatic Pistol (UZI) - Pistol Firing Burst (1)
+The
+[Fully Automatic Pistol (UZI) - Pistol Firing Burst (1)](https://freesound.org/people/FilmmakersManual/sounds/522545/)
+sound is from
+[FilmmakersManual](https://freesound.org/people/FilmmakersManual/sounds/522544/)
+and is licenses under Creative Commons CCO 1.0 Universal (CC) 1.0) Public
+Domain Dedication.

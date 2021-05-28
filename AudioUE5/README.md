@@ -22,10 +22,30 @@ PanningMethod=EqualPower
 MonoChannelUpmixMethod=EqualPower
 ```
 
+## Cue Points
+
+USoundWave and the Metasound Wave Player node supports Cue points on WAV files.
+This is implemented in Runtime/Engine/Private/Audio.cpp in
+`FWaveModInfo::ReadWaveInfo`. For this to work, your WAV file needs to contain
+*cue* chunks (chunks with 4CC ID `'cue '`.  To author these, you'll need a WAV
+exporter/authoring tool that supports them.  At the moment, Audacity (my
+primary tool) does not.
+
+See also:
+
+- [Adding Cue Points to Wav files in C](https://bleepsandpops.com/post/37792760450/adding-cue-points-to-wav-files-in-c)
+
+
 ## Credits
 
 The EchoThief_FortWordenTunnel IR (impulse response) asset was created from the
 [EchoThief](http://www.echothief.com/) library.
+
+The
+[Fully Automatic Pistol (UZI) - Pistol Firing Burst (1)](https://freesound.org/people/FilmmakersManual/sounds/522545/)
+sound is from
+[FilmmakersManual](https://freesound.org/people/FilmmakersManual/sounds/522544/).
+
 
 ## See Also
 
