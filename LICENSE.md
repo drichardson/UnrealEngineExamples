@@ -1,19 +1,7 @@
-Epic sample content (e.g., Animation Starter Pack) is licensed under the terms of the
-[Unreal Engine End User License Agreement version 13](https://www.unrealengine.com/en-US/eula)
-section 1.e:
+# License
 
-> Distribution and sublicensing of Examples - You may Distribute or sublicense
-> Examples (including as modified by you under the License) in Source Code or
-> object code format to any third party.  However, the rights in this Section
-> 1(e) do not expand or modify your limited Distribution and sublicensing
-> rights for Engine Code and Content (including as modified by you under the
-> License) that are not Examples. 
-
-The VolumetricClouds folder contains assets downloaded from Michael Kinsey's
-[Volumetric Clouds in UE4 Tutorial Content](https://www.artstation.com/marketplace/p/KzYA/dinusty-volumetric-clouds-in-ue4-tutorial-content)
-which are licensed under ArtStation's [Marketplace EULA](https://www.artstation.com/marketplace-product-eula).
-
-The rest of the project is free and unencumbered software released into the public domain.
+Aside from the assets detailed below that have their own licenses, this project
+is free and unencumbered software released into the public domain.
 
 Anyone is free to copy, modify, publish, use, compile, sell, or
 distribute this software, either in source code form or as a compiled
@@ -37,3 +25,34 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <http://unlicense.org>
+
+# Epic Sample Content
+Epic sample content (e.g., Animation Starter Pack) is licensed under the terms of the
+[Unreal Engine End User License Agreement version 13](https://www.unrealengine.com/en-US/eula)
+section 1.e:
+
+> Distribution and sublicensing of Examples - You may Distribute or sublicense
+> Examples (including as modified by you under the License) in Source Code or
+> object code format to any third party.  However, the rights in this Section
+> 1(e) do not expand or modify your limited Distribution and sublicensing
+> rights for Engine Code and Content (including as modified by you under the
+> License) that are not Examples.
+
+# Michael Kinsey's Volumetric Clouds
+The VolumetricClouds folder contains assets downloaded from Michael Kinsey's
+[Volumetric Clouds in UE4 Tutorial Content](https://www.artstation.com/marketplace/p/KzYA/dinusty-volumetric-clouds-in-ue4-tutorial-content)
+which are licensed under ArtStation's [Marketplace EULA](https://www.artstation.com/marketplace-product-eula).
+
+# Tobiasz 'unfa' Karoń's IR Recording
+The Audio folder contains an IR (impulse response) asset created made with the
+[Tobiasz 'unfa' Karoń's](https://freesound.org/people/unfa/)
+recording
+[IR-02 (gunshot in a chapel MIXED)](https://freesound.org/people/unfa/sounds/182806/)
+(see link for license details).
+
+# EchoThief Impulse Response Recordings
+AudioUE5 folder contains impulse response audio files from [EchoThief
+Impulse Response Library](http://www.echothief.com/) and is licensed under
+EchoTheif's license (which can be found in a PDF along with the EchoThief audio
+files).
+
