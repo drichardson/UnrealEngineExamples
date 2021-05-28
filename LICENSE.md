@@ -48,11 +48,16 @@ The Audio folder contains an IR (impulse response) asset created made with the
 [Tobiasz 'unfa' Karoń's](https://freesound.org/people/unfa/)
 recording
 [IR-02 (gunshot in a chapel MIXED)](https://freesound.org/people/unfa/sounds/182806/)
-(see link for license details).
+licensed under Creative Commons CCO 1.0 Universal (CC0 1.0) Public Domain Dedication.
 
 # EchoThief Impulse Response Recordings
 AudioUE5 folder contains impulse response audio files from [EchoThief
 Impulse Response Library](http://www.echothief.com/) and is licensed under
 EchoTheif's license (which can be found in a PDF along with the EchoThief audio
-files).
+files) which states:
+
+> You are welcome to use the EchoThief Impulse Response Library to create
+> derivative work (such as convolving it with other sounds to create
+> reverberation). If you would like to use it in any other way, let's talk. You
+> can reach me at chris@superhoax.com .
 
