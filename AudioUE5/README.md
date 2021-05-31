@@ -1,13 +1,14 @@
 # Audio example for UE5
 
-Demonstration of the Metasound feature added in UE5. Includes:
+Demonstration of the UE5 audio features, including:
 
-- Exploration of Metasounds, starting with a A440 generator
-- Procedurally generated wind sound
-- Setting float parameters from Blueprints
-- Invoking triggers from Blueprints
-- Changing submix reverb when entering an area (not using Audio Volumes, which
+- Exploration of MetaSound, starting with a A440 generator
+- Procedurally generated wind MetaSound
+- Setting MetaSound float parameters from Blueprints
+- Invoking MetaSound triggers from Blueprints
+- Changing Submix reverb when entering an area (not using Audio Volumes, which
   will be deprecated according to the UE5 release notes)
+- Audio Modulation plugin Control Bus and Control Bus Mix to mix sounds
 
 
 ## Panning Method
@@ -50,6 +51,7 @@ sound is from
 ## See Also
 
 - [New Audio Features](https://docs.unrealengine.com/5.0/en-US/AudioFeatures/)
+- [Audio Modulation Mixing in UE4.26 Preview 1 - Dan Reynolds](https://www.youtube.com/watch?v=BV5l_7-w7cg)
 
 
 
