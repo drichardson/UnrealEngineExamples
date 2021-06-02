@@ -8,7 +8,8 @@ Demonstration of the UE5 audio features, including:
 - Invoking MetaSound triggers from Blueprints
 - Changing Submix reverb when entering an area (not using Audio Volumes, which
   will be deprecated according to the UE5 release notes)
-- Audio Modulation plugin Control Bus and Control Bus Mix to mix sounds
+- Audio Modulation plugin Control Bus, Control Bus Mix, and Patch Parameters to
+  mix sounds
 
 
 ## Panning Method
