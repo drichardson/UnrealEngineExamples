@@ -1,0 +1,7 @@
+# Unreal Engine Editor seems to like to write out files with a CRLF (at least
+# on Windows) so make sure git uses autocrlf handling on these files that can
+# be modified by the editor.
+
+*.ini	text=auto
+*.uproject	text=auto
+*.uplugin	text=auto
