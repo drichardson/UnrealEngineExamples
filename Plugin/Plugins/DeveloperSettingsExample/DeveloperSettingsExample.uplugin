@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "DeveloperSettingsExample",
+	"Description": "Demonstrates how to read and write a config file for a plugin using UDeveloperSettings.",
+	"Category": "Other",
+	"CreatedBy": "Doug Richardson",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "DeveloperSettingsExample",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
