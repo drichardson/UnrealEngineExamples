@@ -7,6 +7,19 @@
 
 DEFINE_LOG_CATEGORY_STATIC(LogDeveloperSettingsExample, Log, All);
 
+template <typename SettingsClass>
+void LogMySettings()
+{
+	SettingsClass const* Settings = GetDefault<SettingsClass>();
+
+	UE_LOG(LogDeveloperSettingsExample,
+		   Log,
+		   TEXT("%s: SomeInt=%d MyFloat=%f"),
+		   *Settings->GetName(),
+		   Settings->SomeInt,
+		   Settings->MyFloat);
+}
+
 void FDeveloperSettingsExampleModule::StartupModule()
 {
 	// This code will execute after your module is loaded into memory; the exact timing is specified in the .uplugin file per-module
@@ -14,13 +27,12 @@ void FDeveloperSettingsExampleModule::StartupModule()
 	UE_LOG(
 		LogDeveloperSettingsExample, Log, TEXT("FDeveloperSettingsExampleModule::StartupModule"));
 
-	UMyDeveloperSettings const* Settings = GetDefault<UMyDeveloperSettings>();
-
-	UE_LOG(LogDeveloperSettingsExample,
-		   Log,
-		   TEXT("Settings: SomeInt=%d MyFloat=%f"),
-		   Settings->SomeInt,
-		   Settings->MyFloat);
+	LogMySettings<UMyGameSettings>();
+	LogMySettings<UMyGameDefaultConfigSettings>();
+	LogMySettings<UMyEngineSettings>();
+	LogMySettings<UMyEngineDefaultConfigSettings>();
+	LogMySettings<UMyCustomSettings>();
+	LogMySettings<UMyCustomDefaultConfigSettings>();
 }
 
 void FDeveloperSettingsExampleModule::ShutdownModule()
