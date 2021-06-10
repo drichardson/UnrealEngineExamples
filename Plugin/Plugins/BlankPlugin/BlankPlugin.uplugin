@@ -18,7 +18,7 @@
 	[
 		{
 			"Name" : "BlankPlugin",
-			"Type" : "Developer",
+			"Type" : "Runtime",
 			"LoadingPhase" : "Default"
 		}
 	]
