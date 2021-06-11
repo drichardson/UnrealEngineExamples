@@ -14,10 +14,11 @@ void LogMySettings()
 
 	UE_LOG(LogDeveloperSettingsExample,
 		   Log,
-		   TEXT("%s: SomeInt=%d MyFloat=%f"),
+		   TEXT("%s: SomeInt=%d MyFloat=%f MyPath=%s"),
 		   *Settings->GetName(),
 		   Settings->SomeInt,
-		   Settings->MyFloat);
+		   Settings->MyFloat,
+		   *Settings->MyPath.GetAssetPathName().ToString());
 }
 
 void FDeveloperSettingsExampleModule::StartupModule()
