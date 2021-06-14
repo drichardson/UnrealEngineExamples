@@ -34,6 +34,36 @@ void FDeveloperSettingsExampleModule::StartupModule()
 	LogMySettings<UMyEngineDefaultConfigSettings>();
 	LogMySettings<UMyCustomSettings>();
 	LogMySettings<UMyCustomDefaultConfigSettings>();
+	LogMySettings<UBugTestSettings>();
+
+	//
+	// Some extra logs to inspect GConfig.
+	//
+	UE_LOG(
+		LogDeveloperSettingsExample, Verbose, TEXT("Inspecting GConfig. Num=%d"), GConfig->Num());
+
+	for (FConfigCacheIni::ElementType const& Pair : *GConfig)
+	{
+		FString const& ConfigName = Pair.Key;
+		FConfigFile const& ConfigFile = Pair.Value;
+		UE_LOG(LogDeveloperSettingsExample,
+			   Verbose,
+			   TEXT("Config: Name=%s Count=%d SourceIniHierarchy.Num()=%d"),
+			   *ConfigName,
+			   ConfigFile.Num(),
+			   ConfigFile.SourceIniHierarchy.Num());
+
+		for (FConfigFileHierarchy::ElementType const& HierPair : ConfigFile.SourceIniHierarchy)
+		{
+			int32 Key = HierPair.Key;
+			FIniFilename const& Value = HierPair.Value;
+			UE_LOG(LogDeveloperSettingsExample,
+				   Verbose,
+				   TEXT("   Hierarchy Element: Key=%d Value=%s"),
+				   Key,
+				   *Value.Filename);
+		}
+	}
 }
 
 void FDeveloperSettingsExampleModule::ShutdownModule()

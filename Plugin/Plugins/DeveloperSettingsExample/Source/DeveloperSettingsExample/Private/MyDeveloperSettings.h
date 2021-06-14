@@ -131,7 +131,7 @@ public:
 
 // A bug testing a defaultconfig settings with a custom config.
 UCLASS(config = BugTest, defaultconfig)
-class UBugTestgSettings : public UDeveloperSettings
+class UBugTestSettings : public UDeveloperSettings
 {
 	GENERATED_BODY()
 
