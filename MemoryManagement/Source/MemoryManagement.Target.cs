@@ -5,10 +5,12 @@ using System.Collections.Generic;
 
 public class MemoryManagementTarget : TargetRules
 {
-	public MemoryManagementTarget(TargetInfo Target) : base(Target)
-	{
-		Type = TargetType.Game;
+    public MemoryManagementTarget(TargetInfo Target) : base(Target)
+    {
+        Type = TargetType.Game;
 
-		ExtraModuleNames.AddRange( new string[] { "MemoryManagement" } );
-	}
+        DefaultBuildSettings = BuildSettingsVersion.V2;
+
+        ExtraModuleNames.AddRange( new string[] { "MemoryManagement" } );
+    }
 }

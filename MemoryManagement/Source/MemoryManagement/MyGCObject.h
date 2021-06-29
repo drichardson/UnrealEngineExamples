@@ -1,7 +1,6 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GCObject.h"
 
 class MyGCObject : public FGCObject
 {

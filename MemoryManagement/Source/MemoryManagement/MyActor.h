@@ -11,6 +11,13 @@ class AMyActor : public AActor
 {
 	GENERATED_BODY()
 
+public:
+	AMyActor();
+	~AMyActor() override;
+	void Tick(float DeltaSeconds) override;
+	void BeginPlay() override;
+	void PostInitializeComponents() override;
+
 private:
 
 	UPROPERTY(Transient)
@@ -25,9 +32,12 @@ private:
 
 	class MyGCObject* MyGCObj;
 
-	AMyActor();
-	~AMyActor();
-	virtual void Tick(float DeltaSeconds) override;
-	virtual void BeginPlay() override;
-	virtual void PostInitializeComponents() override;
+	UPROPERTY(Transient)
+	TArray<class UObject*> UPropertyArrayThisOuter;
+
+	UPROPERTY(Transient)
+	TArray<class UObject*> UPropertyArrayNoOuter;
+
+	TArray<class UObject*> NonUPropertyArrayThisOuter;
+	TArray<class UObject*> NonUPropertyArrayNoOuter;
 };

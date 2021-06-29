@@ -14,13 +14,14 @@ class UMyComponent1 : public UActorComponent
 public:
 	UMyComponent1();
 
-	virtual ~UMyComponent1() override;
+	~UMyComponent1() override;
 
-	virtual void BeginPlay() override;
-	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
-	virtual void BeginDestroy() override;
-	virtual void DestroyComponent(bool bPromoteChildren) override;
+	void BeginPlay() override;
+	void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
+	void BeginDestroy() override;
+	void DestroyComponent(bool bPromoteChildren) override;
 
-	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
-
+	void TickComponent(float DeltaTime,
+					   enum ELevelTick TickType,
+					   FActorComponentTickFunction* ThisTickFunction) override;
 };

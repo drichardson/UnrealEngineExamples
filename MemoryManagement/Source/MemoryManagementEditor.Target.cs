@@ -5,10 +5,12 @@ using System.Collections.Generic;
 
 public class MemoryManagementEditorTarget : TargetRules
 {
-	public MemoryManagementEditorTarget(TargetInfo Target) : base(Target)
-	{
-		Type = TargetType.Editor;
+    public MemoryManagementEditorTarget(TargetInfo Target) : base(Target)
+    {
+        Type = TargetType.Editor;
 
-		ExtraModuleNames.AddRange( new string[] { "MemoryManagement" } );
-	}
+        DefaultBuildSettings = BuildSettingsVersion.V2;
+
+        ExtraModuleNames.AddRange( new string[] { "MemoryManagement" } );
+    }
 }
