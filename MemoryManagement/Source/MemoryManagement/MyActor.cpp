@@ -73,28 +73,42 @@ void AMyActor::BeginPlay()
 		Weak = ActorToCopy->Weak;
 	}
 
-	for (int i = 0; i < 5; i++)
+	WeakInterface = TWeakInterfacePtr<IMyInterface>(NewObject<UMyObject>(this));
+	ScriptInterfaceUProperty = NewObject<UMyObject>(this);
+	// NakedInterface = NewObject<UMyObject>(this); // Crashes, see header for details.
+	// ScriptInterfaceNonUProperty = NewObject<UMyObject>(this); // Crashes, see header for details.
+
+	constexpr int Num = 2;
+	static int Counter = 1;
+
+	for (int i = 0; i < Num; i++)
 	{
-		UObject* Obj = NewObject<UMyObject>(this, TEXT("1"));
-		UPropertyArrayThisOuter.Add(Obj);
+		UObject* Obj = NewObject<UMyObject>(
+			this, *FString::Format(TEXT("UPropertyArrayItem{0}"), {Counter++}));
+		UPropertyArray.Add(Obj);
 	}
 
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < Num; i++)
 	{
-		UObject* Obj = NewObject<UMyObject>(GetTransientPackage(), TEXT("2"));
-		UPropertyArrayNoOuter.Add(Obj);
+		UObject* Obj = NewObject<UMyObject>(
+			this, *FString::Format(TEXT("NonUPropertyArrayItem{0}"), {Counter++}));
+		NonUPropertyArray.Add(Obj);
 	}
 
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < Num; i++)
 	{
-		UObject* Obj = NewObject<UMyObject>(this, TEXT("3"));
-		NonUPropertyArrayThisOuter.Add(Obj);
+		UObject* Obj = NewObject<UMyObject>(
+			this, *FString::Format(TEXT("UPropertyScriptInterfaceArrayItem{0}"), {Counter++}));
+		UPropertyScriptInterfaceArray.Add(Obj);
+		WeakInterfaceArray.Add(Obj); // Add some objects to the weak array that are strongly
+									 // referenced by the UPropertyScriptInterfaceArray.
 	}
 
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < Num; i++)
 	{
-		UObject* Obj = NewObject<UMyObject>(GetTransientPackage(), TEXT("4"));
-		NonUPropertyArrayNoOuter.Add(Obj);
+		UObject* Obj = NewObject<UMyObject>(
+			this, *FString::Format(TEXT("WeakInterfaceArrayItem{0}"), {Counter++}));
+		WeakInterfaceArray.Add(Obj);
 	}
 }
 
@@ -139,20 +153,126 @@ static void CheckArrayInternal(TArray<UObject*> const& Array, FString Name)
 
 #define CheckArray(Array) CheckArrayInternal(Array, #Array)
 
+template <typename TInterface>
+static void CheckInterfaceInternal(TInterface I, FString Name)
+{
+	if (I)
+	{
+		UE_LOG(MMLog, Log, TEXT("Calling I->Foo() on %s"), *Name);
+		I->Foo();
+	}
+	else
+	{
+		UE_LOG(MMLog, Error, TEXT("%s is null."), *Name);
+	}
+}
+
+#define CheckInterface(I) CheckInterfaceInternal(I, #I)
+
+static void CheckScriptInterfaceArrayInternal(TArray<TScriptInterface<IMyInterface>> const& Array,
+											  FString Name)
+{
+	UE_LOG(MMLog, Log, TEXT("Script Interface Array %s has %d Items."), *Name, Array.Num());
+
+	int Index = 0;
+	int InvalidObjects = 0;
+	for (TScriptInterface<IMyInterface> const& I : Array)
+	{
+		if (I)
+		{
+			I->Foo();
+		}
+		else
+		{
+			UE_LOG(MMLog,
+				   Error,
+				   TEXT("ScriptInterface Array %s object at index %d is null."),
+				   *Name,
+				   Index);
+			InvalidObjects++;
+		}
+		Index++;
+	}
+
+	UE_LOG(MMLog,
+		   Log,
+		   TEXT("ScriptInterface Array %s has %d null interfaces out of %d total interface"),
+		   *Name,
+		   InvalidObjects,
+		   Array.Num());
+}
+
+#define CheckScriptInterfaceArray(Array) CheckScriptInterfaceArrayInternal(Array, #Array)
+
+static void CheckWeakInterfaceArrayInternal(TArray<TWeakInterfacePtr<IMyInterface>> const& Array,
+											FString Name)
+{
+	UE_LOG(MMLog, Log, TEXT("Weak Interface Array %s has %d Items."), *Name, Array.Num());
+
+	int Index = 0;
+	int InvalidObjects = 0;
+	for (TWeakInterfacePtr<IMyInterface> const& I : Array)
+	{
+		if (I.IsValid())
+		{
+			I->Foo();
+		}
+		else
+		{
+			UE_LOG(MMLog,
+				   Error,
+				   TEXT("Weak Interface Array %s object at index %d is null."),
+				   *Name,
+				   Index);
+			InvalidObjects++;
+		}
+		Index++;
+	}
+
+	UE_LOG(MMLog,
+		   Log,
+		   TEXT("Weak Interface Array %s has %d null interfaces out of %d total interface"),
+		   *Name,
+		   InvalidObjects,
+		   Array.Num());
+}
+
+#define CheckWeakInterfaceArray(Array) CheckWeakInterfaceArrayInternal(Array, #Array)
+
 void AMyActor::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
 
-	UE_LOG(MMLog, Log, TEXT("AMyActor::Tick %f, %s"), DeltaSeconds, *GetName());
+	TickCount++;
+
+	UE_LOG(MMLog,
+		   Log,
+		   TEXT("#### AMyActor::Tick TickCount=%d DeltaSeconds=%f Name=%s ####"),
+		   TickCount,
+		   DeltaSeconds,
+		   *GetName());
 
 	CheckPointer(UPropertyDefaultSubobject);
 	CheckPointer(UPropertyNewObject);
 	CheckPointer(Naked);
 	CheckPointer(Weak.Get());
-	CheckArray(UPropertyArrayThisOuter);
-	CheckArray(UPropertyArrayNoOuter);
-	CheckArray(NonUPropertyArrayThisOuter);
-	CheckArray(NonUPropertyArrayNoOuter);
+
+	CheckInterface(ScriptInterfaceUProperty);
+	// CheckInterface(ScriptInterfaceNonUProperty); // Crashes, see header for details.
+	CheckInterface(WeakInterface.ToScriptInterface());
+	// CheckInterface(NakedInterface); // Crashes, see header for details.
+
+	CheckArray(UPropertyArray);
+	CheckArray(NonUPropertyArray);
+	CheckScriptInterfaceArray(UPropertyScriptInterfaceArray);
+	CheckWeakInterfaceArray(WeakInterfaceArray);
+
+	if (TickCount == 2)
+	{
+		// Remove one of the items in UPropertyScriptInterfaceArray that is referenced by
+		// WeakInterfaceArray to observe it getting nulled out.
+		UPropertyScriptInterfaceArray.Remove(WeakInterfaceArray[0].ToScriptInterface());
+	}
 
 	UE_LOG(MMLog, Log, TEXT("Requesting force GC at end of current frame"));
 	GEngine->ForceGarbageCollection(true);
